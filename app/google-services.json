@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "118379390096",
+    "project_id": "hbsensorprototype",
+    "storage_bucket": "hbsensorprototype.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118379390096:android:170c1bea1e43640bb32415",
+        "android_client_info": {
+          "package_name": "com.example.mnrhbsensor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118379390096-02uujl62eoop5aueggcn3tu594n2s142.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyoeI6YclMqObMlK4lyXaXoyVolftGjL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118379390096-02uujl62eoop5aueggcn3tu594n2s142.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

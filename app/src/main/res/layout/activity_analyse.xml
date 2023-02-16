@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".AnalyseActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/fullname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Full Name" />
+
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Age"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/fullname"/>
+
+        <EditText
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Gender"
+            android:layout_below="@id/age"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/resultBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Result"
+            android:layout_below="@id/gender"
+            android:layout_marginTop="20dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>
