@@ -44,8 +44,8 @@
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:text="Login"
         android:layout_marginTop="40dp"
         />
@@ -53,7 +53,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
@@ -61,7 +61,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account ?" />
+            android:text="Don't have an account ?"
+            />
 
         <TextView
             android:id="@+id/registerNowBtn"

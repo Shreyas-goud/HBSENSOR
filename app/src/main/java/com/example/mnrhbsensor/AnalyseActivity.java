@@ -2,6 +2,7 @@ package com.example.mnrhbsensor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -26,6 +27,7 @@ public class AnalyseActivity extends AppCompatActivity {
 
         resultBtn.setOnClickListener(view -> {
             startActivity(new Intent(AnalyseActivity.this,ResultActivity.class));
+            finish();
         });
 
     }

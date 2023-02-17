@@ -2,6 +2,7 @@ package com.example.mnrhbsensor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -18,8 +19,10 @@ public class ResultActivity extends AppCompatActivity {
         final TextView age = findViewById(R.id.result);
         final Button homeBtn = findViewById(R.id.homeBtn);
 
+
         homeBtn.setOnClickListener(view -> {
             startActivity(new Intent(ResultActivity.this, MainActivity.class));
+            finish();
         });
 
     }

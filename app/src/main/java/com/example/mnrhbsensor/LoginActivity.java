@@ -74,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
                             if(getPassword.equals(passwordTxt)){
-
                                 Toast.makeText(LoginActivity.this,"Logged in successfully",Toast.LENGTH_SHORT).show();
                                 //checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
                                 //open main activity on successful login

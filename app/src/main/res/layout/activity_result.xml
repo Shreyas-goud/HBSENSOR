@@ -15,6 +15,8 @@
             android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:textSize="20sp"
             android:text="Full Name"
             />
@@ -25,6 +27,8 @@
             android:layout_height="50dp"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_below="@id/fullname"
             android:text="Your Hemoglobin levels"
             />
@@ -35,6 +39,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_below="@id/result"
+            android:layout_centerInParent="true"
             android:text="Home"
             />
 
