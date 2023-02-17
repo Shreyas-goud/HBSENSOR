@@ -1,5 +1,6 @@
 package com.example.mnrhbsensor;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -35,7 +36,14 @@ public class RegisterActivity extends AppCompatActivity {
         final Button registerBtn = findViewById(R.id.registerBtn);
         final TextView loginNowBtn = findViewById(R.id.loginNowBtn);
 
+        //to show loading on screen
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
+
+
         registerBtn.setOnClickListener(view -> {
+
             final String fullnameTxt = fullname.getText().toString();
             final String emailTxt = email.getText().toString();
             final String phoneTxt = phone.getText().toString();
@@ -56,9 +64,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
             else{
 
+                //shows loading screen
+                progressDialog.show();
                 databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        progressDialog.dismiss();
+
                         //Check if phone is not registered before
                         if(snapshot.hasChild(phoneTxt)){
                             Toast.makeText(RegisterActivity.this, "Phone is already registered", Toast.LENGTH_SHORT).show();
@@ -85,13 +97,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        progressDialog.dismiss();
                     }
                 });
             }
         });
 
         loginNowBtn.setOnClickListener(view -> {
+            progressDialog.show();
             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             finish();
         });

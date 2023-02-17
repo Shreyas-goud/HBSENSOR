@@ -1,6 +1,7 @@
 package com.example.mnrhbsensor;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -36,7 +37,13 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginBtn = findViewById(R.id.loginBtn);
         final TextView registerNowBtn = findViewById(R.id.registerNowBtn);
 
+        //to show loading on screen
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
+
         loginBtn.setOnClickListener(view -> {
+
             final String phoneTxt = phone.getText().toString();
             final String passwordTxt = password.getText().toString();
 
@@ -47,9 +54,13 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Enter valid mobile number !", Toast.LENGTH_SHORT).show();
             }
             else{
+                //shows loading screen
+                progressDialog.show();
                 databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        progressDialog.dismiss();
+
                         //check if mobile is registered in database
                         if(snapshot.hasChild(phoneTxt)){
                             //user already exists
@@ -81,13 +92,17 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        progressDialog.dismiss();
                     }
                 });
             }
         });
 
-        registerNowBtn.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
+        registerNowBtn.setOnClickListener(view -> {
+            //shows loading screen
+            progressDialog.show();
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        });
 
     }
 
