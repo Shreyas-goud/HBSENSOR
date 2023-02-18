@@ -24,7 +24,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.mnrhbsensor.AnalyseActivity;
 import com.example.mnrhbsensor.ColorFinder;
 import com.example.mnrhbsensor.MainActivity;
+import com.example.mnrhbsensor.MemoryData;
 import com.example.mnrhbsensor.databinding.FragmentHomeBinding;
+import com.google.android.material.navigation.NavigationView;
+
+
 
 public class HomeFragment extends Fragment {
 
@@ -41,6 +45,7 @@ public class HomeFragment extends Fragment {
         super.onAttach(activity);
         this.activity = (MainActivity) activity;
     }
+
     ImageView imageView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,6 +61,8 @@ public class HomeFragment extends Fragment {
         final Button cameraBtn = binding.cameraBtn;
         final Button analyseBtn = binding.analyseBtn;
 
+        imageView.setTag("false");
+
         cameraBtn.setOnClickListener(view -> {
             try {
                 Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -66,8 +73,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        analyseBtn.setOnClickListener(view ->{
-            startActivity(new Intent(activity, AnalyseActivity.class));
+
+        analyseBtn.setOnClickListener(view -> {
+            if (imageView.getTag() == "false") {
+                Toast.makeText(activity, "Please take an image first", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(activity, MainActivity.class));
+            } else {
+                startActivity(new Intent(activity, AnalyseActivity.class));
+            }
         });
 
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -93,9 +106,11 @@ public class HomeFragment extends Fragment {
                 Bundle extras = data.getExtras();
                 Bitmap photo = extras.getParcelable("data");
                 imageView.setImageBitmap(photo);
+                imageView.setTag("true");
                 new ColorFinder(new ColorFinder.CallbackInterface() {
                     @Override
                     public void onCompleted(String color) {
+                        MemoryData.saveHexColor(color, activity);
                         Toast.makeText(activity, "Color : " + color, Toast.LENGTH_SHORT).show();
                     }
                 }).findDominantColor(photo);

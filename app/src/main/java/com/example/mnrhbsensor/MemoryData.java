@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 public final class MemoryData {
+    private static String color = "";
     public static void saveData(String data, Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput("mdata.txt", Context.MODE_PRIVATE);
@@ -41,6 +42,16 @@ public final class MemoryData {
             e.printStackTrace();
         }
     }
+    public static void saveHexColor(String data, Context context) {
+        color = data;
+    }
+
+    public static String getHexColor(Context context){
+        String hexColor = color;
+        color = "";
+        return hexColor;
+    }
+
     public static String getData(Context context) {
         String data = "";
         try {
@@ -95,6 +106,20 @@ public final class MemoryData {
     public static void clearUserData(Context context) throws FileNotFoundException {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput("mdata.txt", Context.MODE_PRIVATE);
+            fileOutputStream.write("".getBytes());
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            FileOutputStream fileOutputStream = context.openFileOutput("email.txt", Context.MODE_PRIVATE);
+            fileOutputStream.write("".getBytes());
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            FileOutputStream fileOutputStream = context.openFileOutput("username.txt", Context.MODE_PRIVATE);
             fileOutputStream.write("".getBytes());
             fileOutputStream.close();
         } catch (IOException e) {

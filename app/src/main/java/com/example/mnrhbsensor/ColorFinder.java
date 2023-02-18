@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class ColorFinder {
     private static final String TAG = ColorFinder.class.getSimpleName();
-
     private CallbackInterface callback;
 
     public ColorFinder(CallbackInterface callback) {

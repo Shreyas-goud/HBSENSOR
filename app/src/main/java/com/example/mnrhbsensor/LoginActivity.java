@@ -100,7 +100,22 @@ public class LoginActivity extends AppCompatActivity {
 
                                 //Remembering user
                                 MemoryData.saveData(phoneTxt,LoginActivity.this);
+                                databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        String email = snapshot.child(phoneTxt).child("email").getValue(String.class);
+                                        String username = snapshot.child(phoneTxt).child("fullname").getValue(String.class);
+                                        assert email != null;
+                                        MemoryData.saveEmail(email,LoginActivity.this);
+                                        assert username != null;
+                                        MemoryData.saveUsername(username,LoginActivity.this);
+                                    }
 
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
                                 Toast.makeText(LoginActivity.this,"Logged in successfully",Toast.LENGTH_SHORT).show();
                                 //checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
                                 //open main activity on successful login

@@ -47,6 +47,7 @@
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.MnrHbSensor.NoActionBar" />
+
     </application>
 
 </manifest>

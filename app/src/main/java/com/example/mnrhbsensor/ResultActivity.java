@@ -19,6 +19,7 @@ public class ResultActivity extends AppCompatActivity {
         final TextView age = findViewById(R.id.result);
         final Button homeBtn = findViewById(R.id.homeBtn);
 
+        fullname.setText(MemoryData.getHexColor(ResultActivity.this));
 
         homeBtn.setOnClickListener(view -> {
             startActivity(new Intent(ResultActivity.this, MainActivity.class));
