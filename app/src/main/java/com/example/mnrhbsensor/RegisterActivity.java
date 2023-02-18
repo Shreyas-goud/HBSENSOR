@@ -76,6 +76,11 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, "Phone is already registered", Toast.LENGTH_SHORT).show();
                         }
                         else {
+                            //Remembering user info
+                            MemoryData.saveData(phoneTxt,RegisterActivity.this);
+                            MemoryData.saveEmail(emailTxt,RegisterActivity.this);
+                            MemoryData.saveUsername(fullnameTxt,RegisterActivity.this);
+
                             //Sending data to firebase Realtime Database
                             //We are using phone number as unique identity of every user
                             //so all the other fields of the user comes under phone number
@@ -106,7 +111,6 @@ public class RegisterActivity extends AppCompatActivity {
         loginNowBtn.setOnClickListener(view -> {
             progressDialog.show();
             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-            finish();
         });
     }
 }

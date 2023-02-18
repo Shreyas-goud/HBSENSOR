@@ -42,6 +42,30 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading...");
 
+        //check if user already logged in
+        if(!MemoryData.getData(this).isEmpty()) {
+            String phoneTxt = MemoryData.getData(this);
+            databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String email = snapshot.child(phoneTxt).child("email").getValue(String.class);
+                    String username = snapshot.child(phoneTxt).child("fullname").getValue(String.class);
+                    assert email != null;
+                    MemoryData.saveEmail(email,LoginActivity.this);
+                    assert username != null;
+                    MemoryData.saveUsername(username,LoginActivity.this);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         loginBtn.setOnClickListener(view -> {
 
             final String phoneTxt = phone.getText().toString();
@@ -72,12 +96,16 @@ public class LoginActivity extends AppCompatActivity {
                                 throw new RuntimeException(e);
                             }
 
-
                             if(getPassword.equals(passwordTxt)){
+
+                                //Remembering user
+                                MemoryData.saveData(phoneTxt,LoginActivity.this);
+
                                 Toast.makeText(LoginActivity.this,"Logged in successfully",Toast.LENGTH_SHORT).show();
                                 //checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
                                 //open main activity on successful login
-                                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                startActivity(intent);
                                 finish();
                             }
                             else{
