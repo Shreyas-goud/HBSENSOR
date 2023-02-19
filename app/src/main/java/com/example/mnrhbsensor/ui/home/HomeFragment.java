@@ -4,6 +4,7 @@ import static android.app.Activity.RESULT_OK;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -23,11 +24,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.mnrhbsensor.AnalyseActivity;
 import com.example.mnrhbsensor.ColorFinder;
+import com.example.mnrhbsensor.CropView;
 import com.example.mnrhbsensor.MainActivity;
 import com.example.mnrhbsensor.MemoryData;
 import com.example.mnrhbsensor.databinding.FragmentHomeBinding;
 import com.google.android.material.navigation.NavigationView;
-
 
 
 public class HomeFragment extends Fragment {
@@ -37,7 +38,6 @@ public class HomeFragment extends Fragment {
     final int CAMERA_CAPTURE = 1;
     final int PIC_CROP = 2;
     private Uri picUri;
-
     public MainActivity activity;
 
     @Override
@@ -56,9 +56,11 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
         imageView = binding.imageTaken;
         //final TextView textView = binding.textHome;
         final Button cameraBtn = binding.cameraBtn;
+        //final Button cropBtn = binding.cropBtn;
         final Button analyseBtn = binding.analyseBtn;
 
         imageView.setTag("false");
@@ -72,6 +74,10 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(activity, errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+
+        /*cropBtn.setOnClickListener(view -> {
+            startActivity(new Intent(activity, CropView.class));
+        }); */
 
 
         analyseBtn.setOnClickListener(view -> {
@@ -105,7 +111,9 @@ public class HomeFragment extends Fragment {
                 //performCrop();
                 Bundle extras = data.getExtras();
                 Bitmap photo = extras.getParcelable("data");
-                imageView.setImageBitmap(photo);
+                Bitmap square = MemoryData.cropToCenter(activity, photo);
+                imageView.setImageBitmap(square);
+                MemoryData.saveBitmap(photo,activity);
                 imageView.setTag("true");
                 new ColorFinder(new ColorFinder.CallbackInterface() {
                     @Override

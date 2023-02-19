@@ -1,6 +1,7 @@
 package com.example.mnrhbsensor;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.PrintWriter;
 
 public final class MemoryData {
     private static String color = "";
+    private static Bitmap bitmap;
     public static void saveData(String data, Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput("mdata.txt", Context.MODE_PRIVATE);
@@ -44,6 +46,23 @@ public final class MemoryData {
     }
     public static void saveHexColor(String data, Context context) {
         color = data;
+    }
+
+    public static void saveBitmap(Bitmap bit, Context context){bitmap = bit;}
+
+    public static Bitmap getBitmap(Context context){
+        return bitmap;
+    }
+
+    public static Bitmap cropToCenter(Context context, Bitmap bitmap){
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        int size = Math.min(width,height)/2;
+        int x = (width - size)/2;
+        int y = (height - size)/2;
+
+        return Bitmap.createBitmap(bitmap, x,y,size,size);
     }
 
     public static String getHexColor(Context context){
