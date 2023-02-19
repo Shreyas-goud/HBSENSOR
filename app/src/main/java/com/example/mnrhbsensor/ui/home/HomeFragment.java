@@ -121,7 +121,7 @@ public class HomeFragment extends Fragment {
                         MemoryData.saveHexColor(color, activity);
                         Toast.makeText(activity, "Color : " + color, Toast.LENGTH_SHORT).show();
                     }
-                }).findDominantColor(photo);
+                }).findDominantColor(square);
             }
         }
     }
