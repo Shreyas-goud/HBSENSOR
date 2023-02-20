@@ -16,10 +16,12 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         final TextView fullname = findViewById(R.id.fullname);
-        final TextView age = findViewById(R.id.result);
+        final TextView result = findViewById(R.id.result);
         final Button homeBtn = findViewById(R.id.homeBtn);
 
-        fullname.setText(MemoryData.getHexColor(ResultActivity.this));
+        fullname.setText(MemoryData.getPname(ResultActivity.this));
+        String res = String.valueOf(Hex.getHemoLevel(ResultActivity.this));
+        result.setText(res);
 
         homeBtn.setOnClickListener(view -> {
             startActivity(new Intent(ResultActivity.this, MainActivity.class));

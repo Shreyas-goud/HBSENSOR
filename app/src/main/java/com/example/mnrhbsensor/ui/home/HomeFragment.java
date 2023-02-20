@@ -114,6 +114,7 @@ public class HomeFragment extends Fragment {
                 Bitmap square = MemoryData.cropToCenter(activity, photo);
                 imageView.setImageBitmap(square);
                 MemoryData.saveBitmap(photo,activity);
+                MemoryData.saveImageToGallery(photo,activity);
                 imageView.setTag("true");
                 new ColorFinder(new ColorFinder.CallbackInterface() {
                     @Override

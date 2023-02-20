@@ -116,8 +116,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
-                                Toast.makeText(LoginActivity.this,"Logged in successfully",Toast.LENGTH_SHORT).show();
                                 //checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
+                                Toast.makeText(LoginActivity.this,"Logged in successfully",Toast.LENGTH_SHORT).show();
                                 //open main activity on successful login
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                 startActivity(intent);

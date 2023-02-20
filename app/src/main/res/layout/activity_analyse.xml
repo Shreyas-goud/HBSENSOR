@@ -12,6 +12,7 @@
         android:layout_height="wrap_content" >
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -20,6 +21,7 @@
             android:layout_marginEnd="20dp"/>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/age"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -30,6 +32,7 @@
             android:layout_below="@id/fullname"/>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/gender"
             android:layout_width="match_parent"
             android:layout_height="50dp"

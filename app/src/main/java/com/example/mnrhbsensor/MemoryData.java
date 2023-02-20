@@ -1,7 +1,12 @@
 package com.example.mnrhbsensor;
 
+import static java.lang.System.currentTimeMillis;
+
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.os.Environment;
+import android.provider.MediaStore;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,10 +16,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Date;
 
 public final class MemoryData {
     private static String color = "";
     private static Bitmap bitmap;
+    private static String name = "";
     public static void saveData(String data, Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput("mdata.txt", Context.MODE_PRIVATE);
@@ -63,6 +70,33 @@ public final class MemoryData {
         int y = (height - size)/2;
 
         return Bitmap.createBitmap(bitmap, x,y,size,size);
+    }
+
+
+    public static void saveImageToGallery(Bitmap bitmap, Context context) {
+        String fileName = currentTimeMillis() + ".jpg";
+        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+        File imageFile = new File(storageDir, fileName);
+
+        try {
+            FileOutputStream fos = new FileOutputStream(imageFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+            MediaStore.Images.Media.insertImage(context.getContentResolver(), imageFile.getAbsolutePath(), imageFile.getName(), imageFile.getName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static  void saveName(Context context, String pname){
+        name = pname;
+    }
+
+    public static String getPname(Context context){
+        String pname = name;
+        name = "";
+        return name;
     }
 
     public static String getHexColor(Context context){
