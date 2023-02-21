@@ -4,12 +4,14 @@ import android.content.Context;
 
 public class Hex {
     static int red = 0,green = 0,blue = 0;
-    public void calculateRGB(Context context, String hex){
+    static String hex = "";
+    public static void calculateRGB(Context context){
+        hex = MemoryData.getHexColor();
         red = convertToColorVal(hex,1,3);
         green = convertToColorVal(hex,3,5);
         blue = convertToColorVal(hex,5,7);
     }
-    public int convertToColorVal(String hex, int a,int b){
+    public static int convertToColorVal(String hex, int a,int b){
         int color = 0;
         int mul = 16;
         for(int i=a;i<b;i++){
@@ -27,6 +29,7 @@ public class Hex {
         return color;
     }
     public static double getHemoLevel(Context context){
+        calculateRGB(context);
         double hemoLevel = 0;
         if((red > 160 && red < 180) && (green > 160 && green < 180)&&(blue > 120 && blue < 140)){
             hemoLevel = 2.5;
@@ -36,6 +39,8 @@ public class Hex {
             hemoLevel = 4.0;
         else if(red > 180 && red < 200 && green > 120 && green < 140)
             hemoLevel = 5.0;
+        else
+            hemoLevel = 12;
         return hemoLevel;
     }
 }

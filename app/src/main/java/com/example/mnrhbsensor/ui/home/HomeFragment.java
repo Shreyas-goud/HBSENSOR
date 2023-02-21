@@ -29,12 +29,16 @@ import com.example.mnrhbsensor.MainActivity;
 import com.example.mnrhbsensor.MemoryData;
 import com.example.mnrhbsensor.databinding.FragmentHomeBinding;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-
     final int CAMERA_CAPTURE = 1;
     final int PIC_CROP = 2;
     private Uri picUri;

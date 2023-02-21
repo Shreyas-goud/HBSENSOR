@@ -4,7 +4,12 @@ import static java.lang.System.currentTimeMillis;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.os.Environment;
 import android.provider.MediaStore;
 
@@ -22,6 +27,7 @@ public final class MemoryData {
     private static String color = "";
     private static Bitmap bitmap;
     private static String name = "";
+    private static String userId = "";
     public static void saveData(String data, Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput("mdata.txt", Context.MODE_PRIVATE);
@@ -69,6 +75,21 @@ public final class MemoryData {
         int x = (width - size)/2;
         int y = (height - size)/2;
 
+        /*Bitmap output = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, size, size);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawCircle(size / 2f, size / 2f, size / 2f, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output; */
         return Bitmap.createBitmap(bitmap, x,y,size,size);
     }
 
@@ -80,7 +101,7 @@ public final class MemoryData {
 
         try {
             FileOutputStream fos = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
             fos.flush();
             fos.close();
             MediaStore.Images.Media.insertImage(context.getContentResolver(), imageFile.getAbsolutePath(), imageFile.getName(), imageFile.getName());
@@ -96,10 +117,20 @@ public final class MemoryData {
     public static String getPname(Context context){
         String pname = name;
         name = "";
-        return name;
+        return pname;
     }
 
-    public static String getHexColor(Context context){
+    public static void saveUserId(Context context,String id){
+        userId = id;
+    }
+
+    public static String getUserId(Context context){
+        String pId = userId;
+        userId = "";
+        return pId;
+    }
+
+    public static String getHexColor(){
         String hexColor = color;
         color = "";
         return hexColor;

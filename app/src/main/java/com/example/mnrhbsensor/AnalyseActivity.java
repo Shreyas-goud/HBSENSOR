@@ -45,12 +45,13 @@ public class AnalyseActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String key = String.valueOf(currentTimeMillis());
+                        MemoryData.saveName(AnalyseActivity.this,fullnameTxt);
+                        MemoryData.saveUserId(AnalyseActivity.this, key);
                         databaseReference.child("userdata").child(key).child("fullname").setValue(fullnameTxt);
                         databaseReference.child("userdata").child(key).child("age").setValue(p_age);
                         databaseReference.child("userdata").child(key).child("gender").setValue(genderTxt);
-
-                        MemoryData.saveName(AnalyseActivity.this,fullnameTxt);
-                        flag = true;
+                        startActivity(new Intent(AnalyseActivity.this, ResultActivity.class));
+                        finish();
                     }
 
                     @Override
@@ -60,12 +61,7 @@ public class AnalyseActivity extends AppCompatActivity {
                 });
 
             }
-            if(flag) {
-                startActivity(new Intent(AnalyseActivity.this, ResultActivity.class));
-                finish();
-            }else{
-                Toast.makeText(this, "Please enter the details before proceeding further", Toast.LENGTH_SHORT).show();
-            }
+
         });
 
     }
