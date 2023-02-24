@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/activity_bg"
     tools:context=".ResultActivity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,13 +36,15 @@
 
         <Button
             android:id="@+id/homeBtn"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
             android:layout_below="@id/result"
             android:layout_centerInParent="true"
-            android:text="Home"
-            />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_bg"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="Home" />
 
 
     </RelativeLayout>

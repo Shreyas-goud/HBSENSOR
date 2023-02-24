@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 
@@ -21,6 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URI;
 import java.util.Date;
 
 public final class MemoryData {
@@ -28,6 +30,9 @@ public final class MemoryData {
     private static Bitmap bitmap;
     private static String name = "";
     private static String userId = "";
+
+    private static String imageUrl = "";
+    private static Uri image;
     public static void saveData(String data, Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput("mdata.txt", Context.MODE_PRIVATE);
@@ -75,7 +80,10 @@ public final class MemoryData {
         int x = (width - size)/2;
         int y = (height - size)/2;
 
-        /*Bitmap output = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        return Bitmap.createBitmap(bitmap, x,y,size,size);
+    }
+
+     /*Bitmap output = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
 
         final int color = 0xff424242;
@@ -90,9 +98,6 @@ public final class MemoryData {
         canvas.drawBitmap(bitmap, rect, rect, paint);
 
         return output; */
-        return Bitmap.createBitmap(bitmap, x,y,size,size);
-    }
-
 
     public static void saveImageToGallery(Bitmap bitmap, Context context) {
         String fileName = currentTimeMillis() + ".jpg";
@@ -114,6 +119,13 @@ public final class MemoryData {
         name = pname;
     }
 
+    public static void saveURI(Context context, Uri uri){
+        image = uri;
+    }
+
+    public static Uri getURI(Context context){
+        return image;
+    }
     public static String getPname(Context context){
         String pname = name;
         name = "";
@@ -124,6 +136,13 @@ public final class MemoryData {
         userId = id;
     }
 
+    public static void saveImageUrl(Context context, String url){ imageUrl = url;}
+
+    public static String getImageUrl(Context context){
+        String temp = imageUrl;
+        imageUrl = "";
+        return temp;
+    }
     public static String getUserId(Context context){
         String pId = userId;
         userId = "";

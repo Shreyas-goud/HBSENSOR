@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/activity_bg"
     tools:context=".ui.logout.LogoutFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/viewLogout"
-        android:text="This is logout fragment"
+        android:text="Thanks for using the app"
         android:textSize="20sp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +21,7 @@
 
     <Button
         android:id="@+id/logoutBtn"
-        android:layout_width="100dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Log Out"
@@ -29,7 +30,9 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.656" />
+        app:layout_constraintVertical_bias="0.656"
+        android:background="@drawable/btn_bg"
+        android:textColor="@color/white"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

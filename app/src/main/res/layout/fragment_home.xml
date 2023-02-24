@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment"
+    android:background="@drawable/activity_bg"
     tools:ignore="MissingClass">
 
 
@@ -13,8 +14,9 @@
         android:id="@+id/imageTaken"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginBottom="20dp"
-        android:layout_margin="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -24,21 +26,7 @@
         android:tag="false"/>
 
 
-    <Button
-        android:id="@+id/cameraBtn"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="120dp"
-        android:gravity="center_horizontal"
-        android:text="Camera"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
-
-  <!--  <Button
+    <!--  <Button
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="Crop"
@@ -53,19 +41,36 @@
 -->
 
     <Button
-        android:id="@+id/analyseBtn"
-        android:layout_width="150dp"
+        android:id="@+id/cameraBtn"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="Analyse"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="120dp"
-        android:gravity="center_horizontal"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/btn_bg"
+        android:text="Camera"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857" />
+        app:layout_constraintVertical_bias="0.731" />
+
+    <Button
+        android:id="@+id/analyseBtn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Analyse"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857"
+        android:background="@drawable/btn_bg"
+        android:textColor="@color/white"/>
 
 
 </LinearLayout>

@@ -29,7 +29,9 @@ public class ResultActivity extends AppCompatActivity {
 
         fullname.setText(MemoryData.getPname(ResultActivity.this));
         String res = String.valueOf(Hex.getHemoLevel(ResultActivity.this));
-        result.setText(res);
+        if(res.equals("0.0"))
+            result.setText("Invalid sample");
+        else result.setText(res);
 
         databaseReference.child("userdata").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

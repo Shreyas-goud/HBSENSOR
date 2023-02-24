@@ -4,6 +4,7 @@ import static android.app.Activity.RESULT_OK;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -28,8 +29,11 @@ import com.example.mnrhbsensor.CropView;
 import com.example.mnrhbsensor.MainActivity;
 import com.example.mnrhbsensor.MemoryData;
 import com.example.mnrhbsensor.databinding.FragmentHomeBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -43,6 +47,8 @@ public class HomeFragment extends Fragment {
     final int PIC_CROP = 2;
     private Uri picUri;
     public MainActivity activity;
+
+    StorageReference reference = FirebaseStorage.getInstance().getReference();
 
     @Override
     public void onAttach(Activity activity) {
@@ -119,6 +125,7 @@ public class HomeFragment extends Fragment {
                 imageView.setImageBitmap(square);
                 MemoryData.saveBitmap(photo,activity);
                 MemoryData.saveImageToGallery(photo,activity);
+                MemoryData.saveURI(activity,picUri);
                 imageView.setTag("true");
                 new ColorFinder(new ColorFinder.CallbackInterface() {
                     @Override

@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/activity_bg"
     tools:context=".AnalyseActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
+
 
         <EditText
             android:maxLines="1"
@@ -19,7 +21,9 @@
             android:hint="Full Name"
             android:inputType="text"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"/>
+            android:layout_marginEnd="20dp"
+            android:paddingStart="20dp"
+            android:background="@drawable/input_bg"/>
 
         <EditText
             android:maxLines="1"
@@ -31,7 +35,9 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_below="@id/fullname"/>
+            android:paddingStart="20dp"
+            android:layout_below="@id/fullname"
+            android:background="@drawable/input_bg"/>
 
         <EditText
             android:maxLines="1"
@@ -43,16 +49,19 @@
             android:layout_below="@id/age"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"/>
+            android:layout_marginEnd="20dp"
+            android:paddingStart="20dp"
+            android:background="@drawable/input_bg"/>
 
         <Button
             android:id="@+id/resultBtn"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="50dp"
-            android:text="Result"
             android:layout_below="@id/gender"
-            android:layout_marginTop="40dp"
             android:layout_centerInParent="true"
-            />
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_bg"
+            android:textColor="@color/white"
+            android:text="Result" />
     </RelativeLayout>
 </LinearLayout>

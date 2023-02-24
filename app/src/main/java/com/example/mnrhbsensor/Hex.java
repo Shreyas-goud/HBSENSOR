@@ -28,19 +28,31 @@ public class Hex {
         }
         return color;
     }
+
+    //contains dummy values needs to be updated later
     public static double getHemoLevel(Context context){
         calculateRGB(context);
         double hemoLevel = 0;
-        if((red > 160 && red < 180) && (green > 160 && green < 180)&&(blue > 120 && blue < 140)){
+        if((red >= 200) && (green > 160 && green < 190)&&(blue > 150 && blue < 180)){
             hemoLevel = 2.5;
-        }else if((red > 140 && red < 160) && (green > 180 && green < 200)&&(blue > 100 && blue < 120))
+        }else if((red > 100 && red < 140) && (green > 110 && green < 160)&&(blue > 90 && blue < 130))
             hemoLevel = 3.0;
-        else if(red > 180 && red < 200 && green > 200 && green < 210)
+        else if((red > 60 && red < 100) && (green > 90 && green < 130)&&(blue > 40 && blue < 80))
             hemoLevel = 4.0;
-        else if(red > 180 && red < 200 && green > 120 && green < 140)
+        else if((red >= 200) && (green > 140 && green < 190)&&(blue > 110 && blue < 150))
             hemoLevel = 5.0;
+        else if((red >= 200) && (green > 120 && green < 160)&&(blue > 70 && blue < 100))
+            hemoLevel = 6.0;
+        else if((red > 140 && red < 160) && (green > 20 && green < 40)&&(blue > 20 && blue < 40))
+            hemoLevel = 7.0;
+        else if((red > 150 && red < 180) && (green > 0)&&(blue > 0))
+            hemoLevel = 9.0;
+        else if((red > 120 && red < 150) && (green > 0)&&(blue > 0))
+            hemoLevel = 10.0;
+        else if((red > 80 && red < 110) && (green > 0)&&(blue > 0))
+            hemoLevel = 12.0;
         else
-            hemoLevel = 12;
+            hemoLevel = 0;
         return hemoLevel;
     }
 }
