@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/activity_bg"
+    android:background="@drawable/back"
     tools:context=".ResultActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="256dp"
         android:layout_gravity="center"
         tools:ignore="UselessParent">
 
@@ -18,33 +19,44 @@
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:textSize="20sp"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
             android:text="Full Name"
-            />
+            android:textAlignment="viewStart"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_below="@id/fullname"
+            android:layout_alignStart="@+id/fullname"
+            android:layout_alignEnd="@+id/fullname"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
             android:text="Your Hemoglobin levels"
-            />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/homeBtn"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_below="@id/result"
-            android:layout_centerInParent="true"
+            android:layout_alignStart="@+id/result"
+            android:layout_alignEnd="@+id/result"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="35dp"
             android:background="@drawable/btn_bg"
+            android:text="Home"
             android:textColor="@color/white"
-            android:textSize="15sp"
-            android:text="Home" />
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
